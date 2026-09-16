@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff4d6">
+<title>おのたしざん</title>
+<meta name="description" content="ことばに「お」をひとつたしてみよう！ たのしく まなべる 「お」の たしざん きょうざいです。">
+<meta property="og:title" content="おのたしざん">
+<meta property="og:description" content="ことばに「お」をひとつたしてみよう！">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23ff8a5b'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='white' font-weight='bold'%3E%E3%81%8A%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== タイトル ===== -->
+  <section id="title" class="screen active">
+    <div class="deco" id="titleDeco"></div>
+    <div class="title-inner">
+      <h1 class="logo" aria-label="おのたしざん"></h1>
+      <p class="subtitle">「お」を ひとつ たしてみよう！</p>
+      <button id="startBtn" class="big-btn">はじめる</button>
+      <p class="note">♪ おとが でます</p>
+    </div>
+  </section>
+
+  <!-- ===== ゲーム ===== -->
+  <section id="game" class="screen">
+    <header class="hud">
+      <div class="progress" id="progress"></div>
+      <div class="hud-right">
+        <div class="o-count" id="oCount" hidden>お：<b>0</b>こ</div>
+        <button class="toggle" id="soundBtn" aria-pressed="true">おと</button>
+        <button class="toggle" id="voiceBtn" aria-pressed="true">こえ</button>
+      </div>
+    </header>
+
+    <div class="board">
+      <div class="question-label" id="qLabel">もんだい 1</div>
+      <div class="equation" id="equation"></div>
+      <div class="o-meter" id="oMeter" hidden><div class="o-meter-inner" id="oMeterInner"></div></div>
+      <div class="stage" id="stage">
+        <div class="stage-bg" id="stageBg"></div>
+        <div class="stage-obj" id="stageObj"></div>
+        <div class="stage-fx" id="stageFx"></div>
+      </div>
+      <div class="found" id="found"></div>
+    </div>
+
+    <footer class="bottom">
+      <div class="teacher" id="teacher"></div>
+      <div class="bubble" id="bubble"><span id="bubbleText"></span></div>
+      <div class="bottom-buttons">
+        <button class="mid-btn" id="nextBtn" hidden>つぎへ ▶</button>
+        <button class="mid-btn end" id="endBtn" hidden>おわる</button>
+      </div>
+      <div class="kuma" id="kuma"></div>
+    </footer>
+  </section>
+
+  <!-- ===== けっか ===== -->
+  <section id="result" class="screen">
+    <div class="deco" id="resultDeco"></div>
+    <div class="result-card">
+      <div class="hanamaru" id="hanamaru"></div>
+      <h2 class="result-title">よくできました！</h2>
+      <p class="result-label">きょう たした「お」</p>
+      <p class="result-count"><b id="resultNum">0</b><span>こ</span></p>
+      <p class="result-msg">たしざんが じょうずに なりましたね！</p>
+      <p class="result-again">また「お」を たそうね！</p>
+      <button id="retryBtn" class="big-btn">もういちど</button>
+    </div>
+  </section>
+
+  <canvas id="confetti"></canvas>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/art.js"></script>
+<script src="js/items.js"></script>
+<script src="js/miso.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
