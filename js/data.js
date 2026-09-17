@@ -33,10 +33,11 @@ window.PROBLEMS = [
       { pos: 0, scene: 'bunny', sound: 'boing', line: 'おしりです！', kind: 'bika' },
       { pos: 1, scene: 'shiori', sound: 'pin', line: 'ほんに はさめますね！', kind: 'soune' },
     ] },
-  { base: 'とり', mode: 'choose', before: 'bird', intro: 'ここも ふたつ あるよ！',
+  { base: 'とり', mode: 'choose', before: 'bird', intro: 'ここは みっつ あるよ！',
     answers: [
       { pos: 0, scene: 'decoy', sound: 'whoosh', line: 'おとりに なりました！', kind: 'imi' },
       { pos: 1, scene: 'street', sound: 'whoosh', line: 'とおりが できました！', kind: 'soune' },
+      { pos: 2, scene: 'trio', sound: 'kira', line: 'とりおに なりました！', kind: 'gairaigo' },
     ] },
   { base: 'とく', mode: 'choose', intro: 'よく かんがえてみよう！',
     answers: [

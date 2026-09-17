@@ -182,14 +182,14 @@
       <circle cx="0" cy="-50" r="6" fill="#ffd65c"/>
       <path d="M0 -36 Q4 0 -6 20" stroke="#7ccf8a" stroke-width="4" fill="none"/>`,
 
-    bird: () => `
+    bird: (c = '#7cc6f0', w = '#5aaee0') => `
       <path d="M-14 58 v18 M14 58 v18 M-22 76 h14 M6 76 h16" ${L3}/>
-      <ellipse cx="0" cy="10" rx="62" ry="54" fill="#7cc6f0" ${L}/>
+      <ellipse cx="0" cy="10" rx="62" ry="54" fill="${c}" ${L}/>
       <ellipse cx="0" cy="28" rx="36" ry="30" fill="#e8f6ff"/>
-      <path d="M40 0 Q86 -6 88 30 Q60 30 40 20Z" fill="#5aaee0" ${L3}/>
+      <path d="M40 0 Q86 -6 88 30 Q60 30 40 20Z" fill="${w}" ${L3}/>
       <circle cx="-22" cy="-10" r="7" fill="${INK}"/><circle cx="-20" cy="-13" r="2.5" fill="#fff"/>
       <path d="M-62 -2 L-86 8 L-60 16Z" fill="#ffb347" ${L3}/>
-      <path d="M-4 -44 q6 -20 16 -16 q-4 8 -8 18" fill="#7cc6f0" ${L3}/>`,
+      <path d="M-4 -44 q6 -20 16 -16 q-4 8 -8 18" fill="${c}" ${L3}/>`,
     decoy: () => `
       <rect x="-110" y="40" width="220" height="30" rx="6" fill="#a8743f" ${L}/>
       <path d="M0 40 V20" stroke="${INK}" stroke-width="10"/>
@@ -285,6 +285,14 @@
     shiori: () => ROOM + at(400, 360, P.book()) + at(420, 225, P.shiori(), 'pop-in', 'animation-delay:.25s'),
     bird: () => ROOM + at(400, 280, P.bird()),
     decoy: () => ROOM + at(400, 290, P.decoy()) + `<g transform="translate(400,280)"><g class="fly-away">${P.bird()}</g></g>`,
+    trio: () => {
+      const birds = [[240, '#ff9fbf', '#f07aa0'], [400, '#ffd65c', '#e8b83c'], [560, '#7cc6f0', '#5aaee0']];
+      const notes = [[190, 150, '♪'], [330, 110, '♫'], [480, 130, '♪'], [620, 100, '♫'], [260, 80, '♪']];
+      return ROOM +
+        `<ellipse cx="400" cy="362" rx="260" ry="16" fill="#0001"/>` +
+        birds.map(([x, c, w], i) => `<g transform="translate(${x},280) scale(.85)"><g class="pop-in" style="animation-delay:${i * .15}s"><g class="bob" style="animation-delay:${-i * .4}s;animation-duration:1.2s">${P.bird(c, w)}<path d="M-52 18 q10 10 22 2" fill="#ff8a8a" ${L3}/></g></g></g>`).join('') +
+        notes.map(([x, y, n], i) => `<g transform="translate(${x},${y})"><g class="bob" style="animation-delay:${-i * .3}s"><text font-size="44" font-weight="900" fill="${['#ff8a5b', '#b79cf0', '#6cb8f0'][i % 3]}" stroke="#fff" stroke-width="5" paint-order="stroke" class="fade-in" style="animation-delay:${.4 + i * .12}s">${n}</text></g></g>`).join('');
+    },
     street: () => ROOM + P.street() + `<g transform="translate(400,200)"><g class="fly-away" style="animation-duration:2.4s">${P.bird()}</g></g>`,
     tag: () => ROOM + at(400, 210, P.tag()),
     far: () => P.far() + `<g transform="translate(400,380)"><g class="go-far">${P.farThings()}</g></g>`,
